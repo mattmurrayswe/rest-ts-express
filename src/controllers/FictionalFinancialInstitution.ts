@@ -1,5 +1,5 @@
 import { Request as ExpressRequest, Response as ExpressResponse } from "express"
-import { BankSlipRegistering } from "../services/FictionalFinancialInstitution/BankSlipRegistering/BankSlipRegistering"
+import { BankSlipRegistering as BankSlipRegisteringService } from "../services/FictionalFinancialInstitution/BankSlipRegistering/BankSlipRegistering"
 import { FinancialInstitutionResponseHandler } from "../services/FictionalFinancialInstitution/BankSlipRegistering/classes/Request/FinancialInstitutionResponseHandler"
 import { Response } from "../global/classes/Response"
 
@@ -13,9 +13,9 @@ export class Controller {
         this.req = req
     }
     public async register(res: ExpressResponse): Promise<ExpressResponse> {
-        const bankSlipRegistering = new BankSlipRegistering(this.req)
-        await bankSlipRegistering.handleAuthentication()
-        const response: FinancialInstitutionResponseHandler = await bankSlipRegistering.register()
+        const bankSlipRegisteringService = new BankSlipRegisteringService(this.req)
+        await bankSlipRegisteringService.handleAuthentication()
+        const response: FinancialInstitutionResponseHandler = await bankSlipRegisteringService.register()
         this.setResponse(response)
         return res.status(response.statusCode).json(this.response)
     }
