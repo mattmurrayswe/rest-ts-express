@@ -46,7 +46,7 @@ To run tests:
   Run the following command from your CLI:
 
 ```bash
-  curl -X POST http://<>:3005/financial-institution/bank-slip/register --header "Content-Type: application/json" --data '{
+  curl -X POST http://<host-ip-address>:3005/financial-institution/bank-slip/register --header "Content-Type: application/json" --data '{
     "nuCliente" : "1234567890",
     "dtEmissaoTitulo" : "24.05.2022",
     "dtVencimentoTitulo" : "26.05.2022",
